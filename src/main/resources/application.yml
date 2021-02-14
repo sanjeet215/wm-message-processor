@@ -1,27 +1,11 @@
 server:
-  port:6001
+  port: 6002
 
 spring:
   application:
-    name: WM message processor
+    name: meter-service
   data:
     mongodb:
       host: 127.0.0.1
       port: 27017
       auto-index-creation: true
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-    listener:
-      simple:
-        concurrency: 5
-        max-concurrency: 8
-        retry:
-          enabled: true
-          initial-interval: 3s
-          max-attempts: 2
-          max-interval: 10s
-          multiplier: 2
-
