@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "wm-messages")
-public class WMMessage {
+public class WMMessage implements Comparable<WMMessage> {
 
     private String deviceName;
     private String deviceEUI;
@@ -20,4 +20,15 @@ public class WMMessage {
     private int meterReading;
     private boolean cableStatus;
     private float batteryPercentage;
+
+    @Override
+    public int compareTo(WMMessage wmMessage) {
+        if (wmMessage.getTimeStamp().isAfter(this.getTimeStamp())) {
+            return 1;
+        } else if (wmMessage.getTimeStamp().isAfter(this.getTimeStamp())) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
 }
